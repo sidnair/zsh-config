@@ -81,8 +81,3 @@ alias nog="nogit"
 alias npm_bin="PATH=`pwd`/node_modules/.bin:$PATH; rehash"
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
-
-# Start tmux on interactive shell sessions if it is not already running
-[[ $- != *i* ]] && return
-# screen* matches screen-256color
-(command -v tmux >/dev/null 2>&1) && [[ $TERM != screen* ]] && exec tmux -2
