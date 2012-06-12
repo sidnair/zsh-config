@@ -86,3 +86,5 @@ PATH=~/bin/:~/node_modules/.bin/:$PATH
 [[ $- != *i* ]] && return
 # screen* matches screen-256color
 (command -v tmux >/dev/null 2>&1) && [[ $TERM != screen* ]] && exec tmux -2
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
