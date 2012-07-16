@@ -57,10 +57,15 @@ ZSH_HIGHLIGHT_STYLES+=(
 
 #bindkey "\e[H" beginning-of-line
 #bindkey "\e[F" end-of-line
-bindkey "\e[1;5D" backward-word
-bindkey "\e[1;5C" forward-word
-bindkey "^[OD" backward-word
-bindkey "^[OC" forward-word
+
+# bindkey "\e[1;5D" backward-word
+# bindkey "\e[1;5C" forward-word
+# bindkey "^[OD" backward-word
+# bindkey "^[OC" forward-word
+# bindkey "\e[1~" beginning-of-line
+# bindkey "\e[4~" end-of-line
+# bindkey "\e[5~" history-search-backward
+# bindkey "\e[6~" history-search-forward
 
 alias noh="unsetopt sharehistory"
 
@@ -78,8 +83,10 @@ if [[ -x `which hitch` ]]; then
 	hitch
 fi
 
-alias nogit="disable_git_prompt_info; compdef -d git"
-alias nog="nogit"
+compdef -d git
+
+alias vim='mvim -v'
+
 alias npm_bin="PATH=`pwd`/node_modules/.bin:$PATH; rehash"
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
@@ -90,3 +97,9 @@ PATH=~/bin/:~/node_modules/.bin/:$PATH
 (command -v tmux >/dev/null 2>&1) && [[ $TERM != screen* ]] && exec tmux -2
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export CSCOPE_DB=/Users/sid/code/work/foursquare.web/cscope.out
+
+alias gitpretty="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+alias lint="git diff --cached --name-only | xargs jshint --config ~/repo/scripts/jshint/config.json"
