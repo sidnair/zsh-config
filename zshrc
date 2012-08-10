@@ -90,11 +90,8 @@ alias vim='mvim -v'
 alias npm_bin="PATH=`pwd`/node_modules/.bin:$PATH; rehash"
 
 PATH=~/bin/:~/node_modules/.bin/:$PATH
-
-# Start tmux on interactive shell sessions if it is not already running
-[[ $- != *i* ]] && return
-# screen* matches screen-256color
-(command -v tmux >/dev/null 2>&1) && [[ $TERM != screen* ]] && exec tmux -2
+PATH=/usr/texbin:$PATH
+PATH=~/repo/build/phab/arcanist/bin/:$PATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
@@ -102,4 +99,13 @@ export CSCOPE_DB=/Users/sid/code/work/foursquare.web/cscope.out
 
 alias gitpretty="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-alias lint="git diff --cached --name-only | xargs jshint --config ~/repo/scripts/jshint/config.json"
+alias lint="git diff --cached --name-only | xargs jshint --config /Users/sid/repo/scripts/jshint/config.json"
+alias test-js='/Users/sid/repo/scripts/test/javascript/test-js'
+
+alias mongo_test="mkdir /tmp/mongo-testdb; ~/repo/dependencies/mongodb/bin/mongod --dbpath /tmp/mongo-testdb --maxConns 1500"
+
+alias sbt="./sbt --supermem --  -Dassets.cachedir=build/"
+alias sbt-jetty="./sbt -r --  -Dassets.cachedir=build/ jetty-run 2>&1 | tee /tmp/sbt-jetty.log"
+alias sbt-test="./sbt -t 2>&1 | tee /tmp/sbt-test.log"
+
+alias pants-j="./jetty-run -r 2>&1 | tee /tmp/pants.log"
