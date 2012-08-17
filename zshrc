@@ -69,43 +69,6 @@ ZSH_HIGHLIGHT_STYLES+=(
 
 alias noh="unsetopt sharehistory"
 
-unsetopt auto_name_dirs # rvm_rvmrc_cwd fix
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-unset RUBYOPT
-cd . # to rvm reload
-
-if [[ -x `which hitch` ]]; then
-	hitch() {
-		command hitch "$@"
-		if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-	}
-	alias unhitch='hitch -u'
-	hitch
-fi
-
 compdef -d git
 
-alias vim='mvim -v'
-
-alias npm_bin="PATH=`pwd`/node_modules/.bin:$PATH; rehash"
-
-PATH=~/bin/:~/node_modules/.bin/:$PATH
-PATH=/usr/texbin:$PATH
-PATH=~/repo/build/phab/arcanist/bin/:$PATH
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export CSCOPE_DB=/Users/sid/code/work/foursquare.web/cscope.out
-
 alias gitpretty="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-alias lint="git diff --cached --name-only | xargs jshint --config /Users/sid/repo/scripts/jshint/config.json"
-alias test-js='/Users/sid/repo/scripts/test/javascript/test-js'
-
-alias mongo_test="mkdir /tmp/mongo-testdb; ~/repo/dependencies/mongodb/bin/mongod --dbpath /tmp/mongo-testdb --maxConns 1500"
-
-alias sbt="./sbt --supermem --  -Dassets.cachedir=build/"
-alias sbt-jetty="./sbt -r --  -Dassets.cachedir=build/ jetty-run 2>&1 | tee /tmp/sbt-jetty.log"
-alias sbt-test="./sbt -t 2>&1 | tee /tmp/sbt-test.log"
-
-alias pants-j="./jetty-run -r 2>&1 | tee /tmp/pants.log"
