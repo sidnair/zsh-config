@@ -3,7 +3,7 @@ Installation
 
 To install, run
 
-    git clone git://github.com/sidnair09/zsh-config.git ~/.oh-my-zsh
+    git clone git://github.com/sidnair/zsh-config.git ~/.oh-my-zsh
     cd ~/.oh-my-zsh
     make install
 
