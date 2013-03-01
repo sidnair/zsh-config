@@ -76,6 +76,12 @@ alias gg="git grep $@"
 alias gr="grep -r $@"
 alias ff="git ls-files | grep $@"
 
+# Searches for a Scala or Java style import, finds the first match, copies it to
+# the clipboard, and outputs it for previewing.
+gi() {
+  git grep -h import.*$1 | head -1 | pbcopy && pbpaste
+}
+
 rename() {
   git grep $1 | cut -f 1 -d : | uniq | xargs sed -E -i "" s/$1/$2/g
 }
