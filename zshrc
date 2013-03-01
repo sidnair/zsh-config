@@ -85,3 +85,35 @@ gi() {
 rename() {
   git grep $1 | cut -f 1 -d : | uniq | xargs sed -E -i "" s/$1/$2/g
 }
+
+# Internally used by vopen. First argument is the search command. Subsequent
+# arguments are passed directly to grep.
+_vopen_internal() {
+  FILES=`eval $1`
+  FILES_RET=$?
+  LINES=`echo "$FILES" | wc -l`
+
+  if [ -z "$2" ]; then
+    echo "Enter search term as argument."
+    return 0
+  elif [ $LINES -ne 1 ]; then
+    echo "Multiple matches found."
+    echo "$FILES"
+    return 0
+  elif [ $FILES_RET -ne 0 ]; then
+    echo "No matches."
+    return 1
+  else
+    vim $FILES
+    return 0
+  fi
+}
+
+# Open a file in a git directory in vim. Arguments are passed directly to grep.
+# You can search for a file name or for text in the files.
+vopen() {
+  _vopen_internal 'git ls-files | grep ${@:2}' $@
+  if [ $? -ne 0 ]; then
+    _vopen_internal 'git grep -l ${@:2}' $@
+  fi
+}
