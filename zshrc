@@ -117,3 +117,9 @@ vopen() {
     _vopen_internal 'git grep -l ${@:2}' $@
   fi
 }
+
+# make `C-x e` go to edit mode
+# http://stackoverflow.com/questions/890620/unable-to-have-bash-like-c-x-e-in-zsh
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
