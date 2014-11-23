@@ -127,7 +127,7 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
-export EDITOR="mvim -v"
+export EDITOR="vim"
 
 function __tmux_list_stale() {
   tmux ls | grep -v '(attached)'
