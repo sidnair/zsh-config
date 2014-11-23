@@ -125,3 +125,10 @@ zle -N edit-command-line
 bindkey '^Xe' edit-command-line
 
 export EDITOR="mvim -v"
+
+function __tmux_list_stale() {
+  tmux ls | grep -v '(attached)'
+}
+
+alias tmux-count-stale="__tmux_list_stale | wc -l"
+alias tmux-kill-stale="__tmux_list_stale | cut -d ':' -f 1 | xargs -I{} tmux kill-session -t {}"
