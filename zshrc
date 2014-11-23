@@ -23,6 +23,9 @@ export DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git github git-flow cap gem lol zsh-syntax-highlighting bundler heroku vim go)
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 source /etc/profile
 source $ZSH/oh-my-zsh.sh
 
