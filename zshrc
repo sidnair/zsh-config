@@ -75,9 +75,14 @@ alias noh="unsetopt sharehistory"
 compdef -d git
 
 alias gitpretty="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gg="git grep -n $@"
-alias gr="grep -n -r $@"
+
+gg() {
+  git grep -n $@ | grep -v bower_components | grep --color $@
+}
+
+alias gr="grep -n -r --color $@"
 alias ff="git ls-files | grep $@"
+alias grep="grep --color $@"
 
 # Searches for a Scala or Java style import, finds the first match, copies it to
 # the clipboard, and outputs it for previewing.
