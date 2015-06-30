@@ -140,3 +140,5 @@ alias tmux-kill-stale="__tmux_list_stale | cut -d ':' -f 1 | xargs -I{} tmux kil
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 cd . # to rvm reload
+
+alias vi="vim"
