@@ -29,6 +29,10 @@ for config_file ($ZSH/lib/*.zsh); do
   source $config_file
 done
 
+# TODO - unclear why we need to source this again - something above seems to be
+# overwriting it, but disabling all the libs that get loaded after it doesn't
+# fix the problem
+source $ZSH/lib/key-bindings.zsh
 
 is_plugin() {
   local base_dir=$1
