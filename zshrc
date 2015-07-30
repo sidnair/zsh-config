@@ -136,7 +136,8 @@ function __tmux_list_stale() {
 alias tmux-count-stale="__tmux_list_stale | wc -l"
 alias tmux-kill-stale="__tmux_list_stale | cut -d ':' -f 1 | xargs -I{} tmux kill-session -t {}"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-cd . # to rvm reload
+# Adds almost 0.2s
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# cd . # to rvm reload
 
 alias vi="vim"
