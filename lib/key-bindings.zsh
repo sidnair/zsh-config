@@ -1,11 +1,19 @@
 # ^j ^i ^m ^, ^. cannot be used
-alias ←="pushd -q +1"
-alias →="pushd -q -0"
+# pushdminus is set in lib/directories
+alias ←="pushd -q -1"
+alias →="pushd -q +0"
 alias ↑="cd .."
 bindkey -s '^u' "↑\n"
 bindkey -s '^b' "←\n"
 bindkey -s '^f' "→\n"
 bindkey -s '\ev' "vim\n"
+bindkey -s '^t' "_up\n" # Go up a dir, expanding symlinks
+
+# Make a helper in a function so that it executes realpath at runtime, not when
+# zsh loads this file
+_up() {
+  cd $(realpath .)/..
+}
 
 # bindkey '^r' history-incremental-search-backward
 # bindkey "^[[5~" up-line-or-history
