@@ -86,7 +86,7 @@ gi() {
 }
 
 rename() {
-  git grep $1 | cut -f 1 -d : | uniq | xargs sed -E -i "" s/$1/$2/g
+  git grep $1 | cut -f 1 -d : | uniq | xargs sed -E -i s/$1/$2/g
 }
 
 # Internally used by vopen. First argument is the search command. Subsequent
