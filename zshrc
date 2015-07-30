@@ -72,8 +72,6 @@ ZSH_HIGHLIGHT_STYLES+=(
 
 alias noh="unsetopt sharehistory"
 
-compdef -d git
-
 alias gitpretty="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias gg="git grep -n $@"
