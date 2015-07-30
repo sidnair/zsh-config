@@ -116,10 +116,12 @@ git_prompt_status() {
     STATUS="$ZSH_THEME_GIT_PROMPT_UNMERGED$STATUS"
   fi
   if $(echo "$INDEX" | grep '^## .*ahead' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_AHEAD$STATUS"
+    ahead=$(command git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | sed 's/^ *//g')
+    STATUS="%{$fg[green]%}+$ahead$STATUS"
   fi
   if $(echo "$INDEX" | grep '^## .*behind' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_BEHIND$STATUS"
+    behind=$(command git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | sed 's/^ *//g')
+    STATUS="%{$fg[red]%}-$behind$STATUS"
   fi
   if $(echo "$INDEX" | grep '^## .*diverged' &> /dev/null); then
     STATUS="$ZSH_THEME_GIT_PROMPT_DIVERGED$STATUS"
