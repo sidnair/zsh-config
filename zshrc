@@ -141,3 +141,10 @@ alias tmux-kill-stale="__tmux_list_stale | cut -d ':' -f 1 | xargs -I{} tmux kil
 # cd . # to rvm reload
 
 alias vi="vim"
+
+# SLOW
+function init_nvm() {
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+}
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
