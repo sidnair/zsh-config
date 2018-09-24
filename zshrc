@@ -13,6 +13,8 @@ export ZSH_THEME="gentoo"
 # Comment this out to disable weekly auto-update checks
 export DISABLE_AUTO_UPDATE="true"
 
+export EDITOR="vim"
+
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
 
@@ -126,8 +128,6 @@ vopen() {
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^Xe' edit-command-line
-
-export EDITOR="vim"
 
 function __tmux_list_stale() {
   tmux ls | grep -v '(attached)'
